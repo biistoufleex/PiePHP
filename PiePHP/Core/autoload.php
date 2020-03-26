@@ -1,16 +1,22 @@
 <?php
 
 spl_autoload_register(function($classe){
+
+    // array des controller
+    $arr = ["UserController", "AppController"];
     $classe = str_replace("\\", "/", $classe );
-    require $classe . '.php';
+
+    if (in_array($classe, $arr)) {
+
+        require "src/Controller/" . $classe . ".php";
+    } else {
+
+        require $classe . '.php';
+    }
 });
 
-// require "src/Model/UserModel.php";
-// $test = new UserModel();
-// $test->test();
-
-// $model = new src\Model\UserModel();
-// $model->test();
-
-
 //inclut toute class core et controller 
+
+    // require "src/Controller/UserController.php";
+    // $test = new UserController();
+    // $test->testAction();
