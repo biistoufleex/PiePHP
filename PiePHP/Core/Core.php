@@ -1,26 +1,49 @@
 <?php
 
 namespace Core;
+use Router;
 
 class Core 
 {
 
     public function __construct() {
-        echo __CLASS__ . " __construct <br>";
+        echo "__" .  __CLASS__ . " __construct__ <br>";
         require_once("src/routes.php");
     }
 
-    
+
     public function run() {
-        // echo $_SERVER[REDIRECT_URL] . "<br>";
 
-        $arr = explode("/",substr($_SERVER[REDIRECT_URL], strlen(BASE_URI) + 1));
-        print_r($arr);
-        $class = ucfirst($arr[0]) . "Controller";
-        $methode = $arr[1]. "Action";
+        // Router Static
+        if (($route = Router::get(substr($_SERVER[REDIRECT_URL], strlen(BASE_URI)))) != null) {
+            echo "Router static OK <br>";
 
-        $controller = new $class();
-        $controller->$methode();
+            $class = ucfirst($route['controller']) . "Controller";
+            $methode = $route['action'] . "Action";
+
+            $controller = new $class();
+            $controller->$methode();
+            
+        } else {
+            
+            // Router Dynamique
+            $arr = explode("/",substr($_SERVER[REDIRECT_URL], strlen(BASE_URI) + 1));
+            $class = ucfirst($arr[0]) . "Controller";
+            $methode = $arr[1]. "Action";
+
+            if (class_exists($class)) {
+                $controller = new $class();
+                if (method_exists($controller, $methode)) {    
+                    $controller->$methode();
+                } else {
+                    echo $methode . "existe pas ";
+                    $controller->indexAction();
+                }
+            } else {
+                echo $class . " existe pas";
+                // aficher page 404
+            }
+        }
     }
 }
 

@@ -19,4 +19,7 @@ class UserController
         echo __FUNCTION__ . " Ok \n";
     }
 
+    public function filterAction() {
+        echo __FUNCTION__ . " Ok \n";   
+    }
 }

@@ -2,21 +2,13 @@
 
 spl_autoload_register(function($classe){
 
-    // array des controller
-    $arr = ["UserController", "AppController"];
     $classe = str_replace("\\", "/", $classe );
+    $fichier = ["$classe.php", "src/Controller/$classe.php", "Core/$classe.php"];
 
-    if (in_array($classe, $arr)) {
-
-        require "src/Controller/" . $classe . ".php";
-    } else {
-
-        require $classe . '.php';
-    }
+    foreach ($fichier as $value) {
+        if (is_file($value)) {
+            require $value;
+            return;
+        } 
+    } 
 });
-
-//inclut toute class core et controller 
-
-    // require "src/Controller/UserController.php";
-    // $test = new UserController();
-    // $test->testAction();
