@@ -11,7 +11,6 @@ class Core
         require_once("src/routes.php");
     }
 
-
     public function run() {
 
         // Router Static

@@ -4,7 +4,11 @@ class AppController
 {
 
     public function __construct() {
-        echo __CLASS__ . " _construct<br>";
+        echo __CLASS__ . " _construct ici<br>";
+    }
+    
+    public function indexAction() {
+        echo __FUNCTION__ . "Ok <br>";
     }
 
     public function testAction() {
