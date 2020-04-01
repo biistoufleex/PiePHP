@@ -7,7 +7,7 @@ class Core
 {
 
     public function __construct() {
-        echo "__" .  __CLASS__ . " __construct__ <br>";
+        // echo "__" .  __CLASS__ . " __construct__ <br>";
         require_once("src/routes.php");
     }
 
@@ -15,7 +15,7 @@ class Core
 
         // Router Static
         if (($route = Router::get(substr($_SERVER[REDIRECT_URL], strlen(BASE_URI)))) != null) {
-            echo "Router static OK <br>";
+            // echo "Router static OK <br>";
 
             $class = ucfirst($route['controller']) . "Controller";
             $methode = $route['action'] . "Action";
@@ -35,7 +35,7 @@ class Core
                 if (method_exists($controller, $methode)) {    
                     $controller->$methode();
                 } else {
-                    echo $methode . "existe pas ";
+                    echo "ERROR " . $class . "->" .  $methode . " n'existe pas !<br>";
                     $controller->indexAction();
                 }
             } else {

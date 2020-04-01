@@ -5,9 +5,12 @@ class UserController extends Controller
     
 
     public function __construct() {
-        echo __CLASS__ . " _construct<br>";
+        // echo __CLASS__ . " _construct<br>";
     }
 
+    public function indexAction() {
+        echo "la function " . __FUNCTION__ . "est lancer<br>";
+    }
     // appel en dur mes views
     public function addAction() {
         echo __FUNCTION__ . " Ok \n";
@@ -22,23 +25,20 @@ class UserController extends Controller
     }
 
     public function registerAction() {
-        echo __FUNCTION__ . " Ok \n";   
+        // echo __FUNCTION__ . " Ok \n";   
         $this->render('register');
 
         if (isset($_POST['email'], $_POST['password'])) {
-            
-            //instancie userModel
-            $model = new UserModel($_POST['email'], $_POST['password']);
-            //appel methode save
-            $model->save();
+            if (!empty($_POST['email']) && !empty(['password'])) {
+                // echo "here<br>";
 
+                $model = new UserModel($_POST['email'], $_POST['password']);
+                $model->save();
 
+            } else {
+                echo "Email ou password vide <br>";
+            }
         }
     }
 
-    // public function testAction() {
-    //     $test = new Database();
-    //     $bdd = $test->Connect();
-    //     var_dump($bdd);
-    // }
 }

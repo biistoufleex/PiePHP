@@ -8,7 +8,7 @@ class Database
     private $db_password;
     private $pdo;
 
-    public function __construct($db_name = "tweet_academie", $db_host = "localhost", $db_login = "kevin", $db_password = "")
+    public function __construct($db_name = "PiePHP", $db_host = "localhost", $db_login = "kevin", $db_password = "")
     {
         $this->db_name = $db_name;
         $this->db_host = $db_host;
@@ -18,7 +18,7 @@ class Database
 
     public function Connect()
     {
-        $pdo = new PDO('mysql:dbname=tweet_academie;host=localhost', 'kevin', '');
+        $pdo = new PDO('mysql:dbname=PiePHP;host=localhost', 'kevin', '');
         $pdo->exec("SET CHARACTER SET utf8");
         $this->pdo = $pdo;
         return $pdo;

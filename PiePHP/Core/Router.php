@@ -5,7 +5,7 @@ class Router
     private static $routes;
 
     public static function connect($url, $route) {
-        echo "Connecting $url <br>";
+        // echo "Connecting $url <br>";
         self::$routes[$url] = $route;
     }
 
