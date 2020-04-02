@@ -8,7 +8,8 @@
 <body>
 <center>
 
-    <form action="http://localhost/PiePHP/index.php" method="post">
+<h1>LOGIN</h1>
+    <form action="http://localhost/PiePHP/User/acceuil" method="post">
     
         <label for="email">Enter your email: </label>
         <input type="text" name="email" id="email" required>
@@ -23,5 +24,3 @@
 </center>
 </body>
 </html>
-
-<!-- http://localhost/PiePHP/src/View/User/login.php -->

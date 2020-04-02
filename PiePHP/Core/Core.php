@@ -35,12 +35,12 @@ class Core
                 if (method_exists($controller, $methode)) {    
                     $controller->$methode();
                 } else {
-                    echo "ERROR " . $class . "->" .  $methode . " n'existe pas !<br>";
+                    echo "ERROR LA METHOD -> "  .  $methode . " N'EXISTE PAS !<br>";
                     $controller->indexAction();
                 }
             } else {
-                echo $class . " existe pas";
-                // aficher page 404
+                echo "ERROR LA CLASS -> ". $class . " N'EXISTE PAS !<br>";
+                
             }
         }
     }
