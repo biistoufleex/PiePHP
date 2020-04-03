@@ -9,6 +9,7 @@
 <center>
 
 <h1>LOGIN</h1>
+
     <form action="http://localhost/PiePHP/User/acceuil" method="post">
     
         <label for="email">Enter your email: </label>

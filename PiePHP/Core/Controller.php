@@ -7,6 +7,7 @@ class Controller
 
     protected function render($view, $scope = []) {
         
+
         extract($scope);
 
         $path = ($view == "404") ? "Error" : get_class($this);
@@ -24,7 +25,8 @@ class Controller
                 . '.php');
                 self::$_render = ob_get_clean();
 
-                echo self::$_render;
+                echo "<a href=" . 'add' . "><button>ADD</button></a> <br>" .  
+                "<a href=" . 'delete' . "><button>Delete</button></a> <br>" . self::$_render;
             }
     }
 }

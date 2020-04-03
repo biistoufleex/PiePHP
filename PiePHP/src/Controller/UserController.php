@@ -32,10 +32,9 @@ class UserController extends Controller
     }
     
     public function loginAction() {
-
+        
         $this->save();
         $this->render('login');
-
     }
 
 
@@ -43,11 +42,10 @@ class UserController extends Controller
     public function save() {
         if (isset($_POST['email'], $_POST['password'])) {
             if (!empty($_POST['email']) && !empty(['password'])) {
-                // echo "here<br>";
                 
                 $model = new UserModel($_POST['email'], $_POST['password']);
-                $model->save();
-                
+                $id = $model->create();
+
             } else {
                 echo "Email ou password vide <br>";
             }
@@ -64,6 +62,7 @@ class UserController extends Controller
                 if ($model->rowUser() == 1) {
 
                     $this->render('acceuil');
+                    $model->readAll();
 
                 } else {
                     $this->render('login');
@@ -77,5 +76,12 @@ class UserController extends Controller
         }
     }
 
+    ///////////////VERIFIER SI CORRECT///////////////
+    public function testAction() {
+        $model = new UserModel();
+
+        $model->read(2, ["email", "password"]);
+    }
+    ////////////////////////////////////////////////
 
 }
