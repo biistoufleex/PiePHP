@@ -4,7 +4,10 @@ class AppController
 {
 
     public function __construct() {
-        echo __CLASS__ . " _construct ici<br>";
+      
+        $request = new Core\Request($_POST, $_GET);
+        $this->clean = $request->cleanArray();
+        print_r($this->clean);
     }
     
     public function indexAction() {

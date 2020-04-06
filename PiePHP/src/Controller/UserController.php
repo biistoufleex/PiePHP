@@ -5,7 +5,9 @@ class UserController extends Controller
     
 
     public function __construct() {
-        // echo __CLASS__ . " _construct<br>";
+        $request = new Core\Request($_POST, $_GET);
+        $this->clean = $request->cleanArray();
+        print_r($this->clean);
     }
 
     public function indexAction() {

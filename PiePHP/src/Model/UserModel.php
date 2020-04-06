@@ -30,6 +30,7 @@ class UserModel
         $req->execute(array($this->email, $this->password));
         return $req->rowCount();
     }
+    
 
     // create (créé une nouvelle entrée en base avec les champs passés en paramètres et retourne son id)
     public function create() {
