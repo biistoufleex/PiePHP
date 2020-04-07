@@ -5,13 +5,25 @@ class UserController extends Controller
     
 
     public function __construct() {
-        $request = new Core\Request($_POST, $_GET);
-        $this->clean = $request->cleanArray();
-        print_r($this->clean);
+        $this->request = new Request($_POST, $_GET);
+        $this->orm = new ORM();
+        $this->clean = $this->request->cleanArray();
     }
 
     public function indexAction() {
-        echo "la function " . __FUNCTION__ . "est lancer<br>";
+        // echo "la function " . __FUNCTION__ . "est lancer<br>";
+        // $this->orm->create("users", ['email'=>'pauline', 'password'=>'chauvel']);
+
+        // $this->orm->find("users");
+
+        // $this->orm->read("users", "1");
+
+        // $bool = $this->orm->delete('users', 2);
+        // var_dump($bool);
+
+        $bool = $this->orm->update("users", 10, ['email'=>'jqireussi', 'password'=>'cesttropcool']);
+        var_dump($bool);
+
     }
     
     public function errorAction() {
