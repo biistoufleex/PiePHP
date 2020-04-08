@@ -1,5 +1,6 @@
 <?php 
 
+// namespace ORM;
 
 class ORM 
 {

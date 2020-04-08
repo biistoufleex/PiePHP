@@ -11,17 +11,17 @@ class UserController extends Controller
     }
 
     public function indexAction() {
-        // echo "la function " . __FUNCTION__ . "est lancer<br>";
-        // $this->orm->create("users", ['email'=>'pauline', 'password'=>'chauvel']);
+        echo "la function " . __FUNCTION__ . "est lancer<br>";
+        $this->orm->create("users", ['email'=>'pauline', 'password'=>'chauvel']);
 
-        // $this->orm->find("users");
+        $this->orm->find("users");
 
-        // $this->orm->read("users", "1");
+        $this->orm->read("users", "1");
 
-        // $bool = $this->orm->delete('users', 2);
-        // var_dump($bool);
+        $bool = $this->orm->delete('users', 2);
+        var_dump($bool);
 
-        $bool = $this->orm->update("users", 10, ['email'=>'jqireussi', 'password'=>'cesttropcool']);
+        $bool = $this->orm->update("users", 10, ['email'=>'updateFuncion', 'password'=>'cestOk']);
         var_dump($bool);
 
     }
