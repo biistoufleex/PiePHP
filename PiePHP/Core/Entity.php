@@ -4,25 +4,28 @@
 
 class Entity 
 {
-    public function __constuct($arr = ['default' => 'null']) {
+    public function __construct($arr = []) {
+
+        if (array_key_exists('id', $arr)) {
+            $this->orm = new ORM();
+            $arr = $this->orm->read('table',$id);
+        }
 
         foreach ($arr as $key => $value) {
 
+            // echo $key . " $value <br>";
            $this->$key = $value;
         }
     }
 
-    public function request($requette) {
-
-        print_r($requette);
+    public function request() {
+// clear post get cookie
     }
 
     public function test($test) {
-        if ($this->$test) {
-            echo $this->$test;
-        } else {
-            echo "unset";
-        }
+        
+        echo $this->$test;
+        // echo $test;
     }
     
 }
