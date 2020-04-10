@@ -5,9 +5,9 @@ class UserController extends Controller
     
 
     public function __construct() {
-        $this->request = new Request($_POST, $_GET);
+     
         $this->orm = new ORM();
-        $this->clean = $this->request->cleanArray();
+
     }
 
     public function indexAction() {
@@ -24,9 +24,14 @@ class UserController extends Controller
         // $bool = $this->orm->update("users", 10, ['email'=>'updateFuncion', 'password'=>'cestOk']);
         // var_dump($bool);
 
-        $entity = new Entity(['titre'=>'zombie', 'content' => 'horor', 'autor' => 'kevin' ]);
-        $entity = new Entity(['id' => 3 ]);
-        // $entity->test('content');
+        
+        $user = new UserModel(['email' =>'testReussi', 'password' => 'cestCool']);
+        // $user = new UserModel(['id'=>3]);
+        // echo $user->titre;
+
+        $params = Request::getQueryParams($_REQUEST);
+        print_r($params);
+        $user->create();
     }
     
     public function errorAction() {

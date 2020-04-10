@@ -4,28 +4,33 @@
 
 class Entity 
 {
+
     public function __construct($arr = []) {
+        
+        $this->orm = new ORM();
 
         if (array_key_exists('id', $arr)) {
-            $this->orm = new ORM();
-            $arr = $this->orm->read('table',$id);
+            
+            $table = strtolower(substr(get_class($this), 0, -5)) . "s";
+            $arr = $this->orm->read($table, $arr['id']);
+            foreach ($arr[0] as $key => $value) {
+
+                $this->$key = $value;
+            }
+
+        } else {
+            
+            foreach ($arr as $key => $value) {
+
+                $this->$key = $value;
+            }
         }
 
-        foreach ($arr as $key => $value) {
-
-            // echo $key . " $value <br>";
-           $this->$key = $value;
-        }
+        $this->infos = $arr;
     }
 
     public function request() {
-// clear post get cookie
-    }
-
-    public function test($test) {
-        
-        echo $this->$test;
-        // echo $test;
+    // clear post get cookie
     }
     
 }

@@ -3,19 +3,7 @@
 class UserModel extends Entity
 {
 
-    private $pdo;
-    private $email;
-    private $password;
-
-    //conection BDD dans construct
-    public function __construct($email = "", $password = "" ) {
-
-        $connect = new Database();
-        $this->pdo = $connect->Connect();
-        $this->email = htmlspecialchars(trim($email));
-        $this->password = htmlspecialchars(trim($password));
-    }
-
+    
     public function getId() {
         $req = $this->pdo->prepare("SELECT id from users WHERE email = ?");
         $req->execute(array($this->email));
@@ -34,10 +22,12 @@ class UserModel extends Entity
 
     // create (créé une nouvelle entrée en base avec les champs passés en paramètres et retourne son id)
     public function create() {
-        $req = $this->pdo->prepare("INSERT INTO users(email, password) VALUES (?, ?)");
-        $req->execute(array($this->email, $this->password));
-        $id = $this->getId();
-        return $id;
+        // $req = $this->pdo->prepare("INSERT INTO users(email, password) VALUES (?, ?)");
+        // $req->execute(array($this->email, $this->password));
+        // $id = $this->getId();
+        // return $id;
+
+        $this->orm->create('users',$this->infos);
     }
 
 

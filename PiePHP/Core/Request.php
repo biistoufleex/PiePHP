@@ -2,22 +2,16 @@
 
 class Request 
 {
-    private $secureValue = [];
 
-    public function __construct($securePost, $secureGet) {
+    public static function getQueryParams($arr) {
         echo "debut ---------------------->" . __CLASS__ . "<br>";
-        foreach ($securePost as $value) {
-            array_push($this->secureValue, htmlspecialchars(trim(stripcslashes($value))));
+        $secureValue = [];
+        foreach ($arr as $value) {
+            array_push($secureValue, htmlspecialchars(trim(stripcslashes($value))));
         }
 
-        foreach ($secureGet as $value) {
-            array_push($this->secureValue, htmlspecialchars(trim(stripcslashes($value))));
-        }
-
+        print_r($secureValue);
+        return $secureValue;
     }
 
-    public function cleanArray() {
-
-        return $this->secureValue;
-    }
 }

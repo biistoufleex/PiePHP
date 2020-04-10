@@ -8,7 +8,7 @@ class ORM
     private $pdo;
 
     public function __construct() {
-        // echo "on est la <br>";
+
         $connect = new Database();
         $this->pdo = $connect->Connect();
     }
